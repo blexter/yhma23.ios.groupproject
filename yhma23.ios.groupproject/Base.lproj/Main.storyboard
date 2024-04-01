@@ -144,7 +144,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="input-text" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Hw-MZ-bAX">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Hw-MZ-bAX">
                                 <rect key="frame" x="120" y="441" width="123" height="116"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -166,7 +166,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="okButton:" destination="6GA-c4-81N" eventType="touchUpInside" id="jcA-59-q3h"/>
-                                    <segue destination="Se5-8v-jxO" kind="show" id="xAd-ws-cDr"/>
+                                    <segue destination="Se5-8v-jxO" kind="show" id="YYb-Qx-HzU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -261,7 +261,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xAd-ws-cDr"/>
         <segue reference="yUr-It-JjT"/>
         <segue reference="2fz-hY-iPm"/>
     </inferredMetricsTieBreakers>
