@@ -26,7 +26,33 @@ class GameViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        startFallingAnimation()
+        let countdownLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        countdownLabel.center = CGPoint(x: view.frame.size.width / 2, y: view.frame.size.height / 2)
+        countdownLabel.textAlignment = .center
+        countdownLabel.font = UIFont.boldSystemFont(ofSize: 48) 
+        countdownLabel.textColor = UIColor.blue 
+        view.addSubview(countdownLabel)
+
+        startCountdown(from: 3, label: countdownLabel)
+    }
+
+
+    func startCountdown(from number: Int, label: UILabel) {
+        if number > 0 {
+            // Update label
+            label.text = "\(number)"
+
+            // Repeat function after a delay 1 second in between
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.startCountdown(from: number - 1, label: label)
+            }
+        } else {
+
+            // Hide the countdown label and start animation
+            label.isHidden = true
+
+            startFallingAnimation()
+        }
     }
 
      func startFallingAnimation() {
