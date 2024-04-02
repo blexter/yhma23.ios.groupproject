@@ -32,8 +32,9 @@ class DifficultyModes: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "startGame", let gameViewController = segue.destination as? GameViewController {
-            gameViewController.words = gameModel.selectedWords
+            gameViewController.gameModel = gameModel
         }
     }
+
 }
 
