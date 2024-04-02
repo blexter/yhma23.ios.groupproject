@@ -13,6 +13,31 @@ class PlayerViewController: UIViewController {
     
     var player = Player(name: "Default Player")
     
+    
+    @IBAction func changeButton(_ sender: UIButton) {
+        
+        let alert = UIAlertController(title: "Change Player Name", message: "Enter a new player name", preferredStyle: .alert)
+        
+        alert.addTextField { textField in
+            textField.placeholder = "New player name"
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        let change = UIAlertAction(title: "Change", style: .default) { [weak self, weak alert] _ in
+            guard let alertController = alert, let textField = alertController.textFields?.first else { return }
+            
+            self?.player.name = textField.text ?? ""
+            
+            self?.playerNameLabel.text = self?.player.name
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(change)
+        
+        present(alert, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,15 +45,4 @@ class PlayerViewController: UIViewController {
         playerNameLabel.text = player.name
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
