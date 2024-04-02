@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0285F252BBB3F4D0082E851 /* DifficultyModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0285F242BBB3F4D0082E851 /* DifficultyModes.swift */; };
 		E1DCB85D2BB7303D00908BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DCB85C2BB7303D00908BDA /* AppDelegate.swift */; };
 		E1DCB85F2BB7303D00908BDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DCB85E2BB7303D00908BDA /* SceneDelegate.swift */; };
 		E1DCB8642BB7303D00908BDA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E1DCB8632BB7303D00908BDA /* Base */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E0285F242BBB3F4D0082E851 /* DifficultyModes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyModes.swift; sourceTree = "<group>"; };
 		E1DCB8592BB7303D00908BDA /* yhma23.ios.groupproject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yhma23.ios.groupproject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1DCB85C2BB7303D00908BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1DCB85E2BB7303D00908BDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				E1DCB8782BB73BC300908BDA /* Highscore.swift */,
 				E1DCB87A2BB73BF600908BDA /* GameModel.swift */,
 				E1DCB87C2BB73D0900908BDA /* StartViewController.swift */,
+				E0285F242BBB3F4D0082E851 /* DifficultyModes.swift */,
 			);
 			path = yhma23.ios.groupproject;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 				E1DCB87B2BB73BF600908BDA /* GameModel.swift in Sources */,
 				E1DCB8792BB73BC300908BDA /* Highscore.swift in Sources */,
 				E1DCB8772BB73A8E00908BDA /* HighscoreTableViewController.swift in Sources */,
+				E0285F252BBB3F4D0082E851 /* DifficultyModes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

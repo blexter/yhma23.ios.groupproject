@@ -14,8 +14,10 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var writeTheWordLabel: UILabel!
     @IBOutlet weak var inputWordTextField: UITextField!
     
-    var words: [String] = ["h", "w", "a", "i", "game","Android"]
     var currentWordIndex = 0
+        var words: [String] = []
+
+    
     
     @IBAction func okButton(_ sender: Any) {
         
@@ -25,7 +27,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+
         // Do any additional setup after loading the view.
         
         let countdownLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
@@ -58,6 +61,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             label.isHidden = true
             
             startFallingAnimation()
+
         }
     }
     
