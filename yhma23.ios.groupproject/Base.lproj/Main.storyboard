@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2S-W9-Wmn">
-                                <rect key="frame" x="120" y="334" width="153" height="38.333333333333314"/>
+                                <rect key="frame" x="120" y="334" width="153" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Start game">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -29,7 +29,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kR7-ZE-Wll">
-                                <rect key="frame" x="120" y="399.66666666666669" width="153" height="38.333333333333314"/>
+                                <rect key="frame" x="120" y="403.66666666666669" width="153" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Highscore">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -37,7 +37,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="highscoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jcc-He-hlz"/>
-                                    <segue destination="9UD-O5-BhT" kind="show" id="N9D-bf-DKL"/>
+                                    <segue destination="YEJ-EA-hSw" kind="show" id="ZAZ-w6-DN8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -65,62 +65,50 @@
             <point key="canvasLocation" x="20.610687022900763" y="3.5211267605633805"/>
         </scene>
         <!--Highscore Table View Controller-->
-        <scene sceneID="VAK-f5-VKo">
+        <scene sceneID="MH1-No-71T">
             <objects>
-                <viewController id="9UD-O5-BhT" customClass="HighscoreTableViewController" customModule="yhma23_ios_groupproject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7lZ-Eu-lnd">
+                <tableViewController id="YEJ-EA-hSw" customClass="HighscoreTableViewController" customModule="yhma23_ios_groupproject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="gGd-jl-2D9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highscore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJm-rn-LiG">
-                                <rect key="frame" x="100" y="115" width="193" height="46"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bhI-dI-pIb">
-                                <rect key="frame" x="0.0" y="197" width="393" height="544"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="g9B-Ze-qC3">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="47.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g9B-Ze-qC3" id="vhj-uc-scR">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="47.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4a-XJ-32t">
-                                <rect key="frame" x="120" y="778.66666666666663" width="153" height="38.333333333333371"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Play">
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="baseBackgroundColor" red="1" green="0.91265018019999999" blue="0.87650665849999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="playButton:" destination="9UD-O5-BhT" eventType="touchUpInside" id="Eoj-QD-KbS"/>
-                                    <segue destination="6GA-c4-81N" kind="show" id="awL-cn-l7m"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="WZn-Mw-veO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="eJm-rn-LiG" firstAttribute="top" secondItem="WZn-Mw-veO" secondAttribute="top" constant="115" id="60Y-s2-3x0"/>
-                            <constraint firstItem="WZn-Mw-veO" firstAttribute="bottom" secondItem="c4a-XJ-32t" secondAttribute="bottom" constant="25" id="6Ek-yA-ce7"/>
-                            <constraint firstItem="WZn-Mw-veO" firstAttribute="trailing" secondItem="eJm-rn-LiG" secondAttribute="trailing" constant="100" id="Wkj-wb-LGA"/>
-                            <constraint firstItem="WZn-Mw-veO" firstAttribute="bottom" secondItem="c4a-XJ-32t" secondAttribute="bottom" constant="25" id="h5l-tT-b9B"/>
-                            <constraint firstItem="c4a-XJ-32t" firstAttribute="leading" secondItem="WZn-Mw-veO" secondAttribute="leading" constant="120" id="ihG-W9-c0m"/>
-                            <constraint firstItem="eJm-rn-LiG" firstAttribute="leading" secondItem="WZn-Mw-veO" secondAttribute="leading" constant="100" id="nJm-5H-osf"/>
-                            <constraint firstItem="WZn-Mw-veO" firstAttribute="trailing" secondItem="c4a-XJ-32t" secondAttribute="trailing" constant="120" id="tv5-bg-yhj"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="Gxt-5Q-O3s"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TAt-xt-Oi2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highscore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="inD-qQ-6ku">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="101"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="taA-PW-kGW">
+                            <rect key="frame" x="0.0" y="222.66666793823242" width="393" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Play">
+                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="baseBackgroundColor" red="1" green="0.91265018019999999" blue="0.87650665849999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <segue destination="6GA-c4-81N" kind="show" id="sQB-zV-NIo"/>
+                            </connections>
+                        </button>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="highScoreCell" id="IXx-K7-NP7">
+                                <rect key="frame" x="0.0" y="151" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IXx-K7-NP7" id="Zv8-GL-ePL">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YEJ-EA-hSw" id="2t9-l7-Leg"/>
+                            <outlet property="delegate" destination="YEJ-EA-hSw" id="4fC-wd-aeY"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="YoA-lw-C0s"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QgB-by-K3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="21" y="679"/>
         </scene>
@@ -133,7 +121,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pw9-rn-nFk">
-                                <rect key="frame" x="153.66666666666666" y="467" width="85.666666666666657" height="38.333333333333314"/>
+                                <rect key="frame" x="153.66666666666666" y="463" width="85.666666666666657" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Medium">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -142,12 +130,11 @@
                                 <connections>
                                     <action selector="MediumMode:" destination="hZv-yu-HgU" eventType="touchUpInside" id="LZ7-pD-oyM"/>
                                     <action selector="mediumMode:" destination="uMh-xz-ZLa" eventType="touchUpInside" id="O6O-JW-dCg"/>
-                                    <action selector="playButton:" destination="9UD-O5-BhT" eventType="touchUpInside" id="QiF-jn-K9r"/>
                                     <segue destination="6GA-c4-81N" kind="showDetail" identifier="startGame" id="MvS-Hg-PvK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jve-H1-8SH">
-                                <rect key="frame" x="166" y="567" width="61" height="38.333333333333371"/>
+                                <rect key="frame" x="166" y="559" width="61" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Hard">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -156,7 +143,6 @@
                                 <connections>
                                     <action selector="HardMode:" destination="hZv-yu-HgU" eventType="touchUpInside" id="rGM-Ma-GnC"/>
                                     <action selector="hardMode:" destination="uMh-xz-ZLa" eventType="touchUpInside" id="xYw-A7-yAb"/>
-                                    <action selector="playButton:" destination="9UD-O5-BhT" eventType="touchUpInside" id="Y28-ZO-N9I"/>
                                     <segue destination="6GA-c4-81N" kind="showDetail" identifier="startGame" id="MzH-4e-B3a"/>
                                 </connections>
                             </button>
@@ -176,7 +162,6 @@
                                 <connections>
                                     <action selector="EasyMode:" destination="hZv-yu-HgU" eventType="touchUpInside" id="XNk-9V-fTA"/>
                                     <action selector="easyMode:" destination="uMh-xz-ZLa" eventType="touchUpInside" id="vCb-Hb-TZM"/>
-                                    <action selector="playButton:" destination="9UD-O5-BhT" eventType="touchUpInside" id="C2z-Ad-rbM"/>
                                     <segue destination="6GA-c4-81N" kind="showDetail" identifier="startGame" id="aXG-ZT-otm"/>
                                 </connections>
                             </button>
@@ -286,7 +271,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fa-0p-skY">
-                                <rect key="frame" x="50" y="480.66666666666669" width="102" height="38.333333333333314"/>
+                                <rect key="frame" x="50" y="484.66666666666669" width="102" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Play again">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -298,7 +283,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCi-CN-Agr">
-                                <rect key="frame" x="241" y="480.66666666666669" width="102" height="38.333333333333314"/>
+                                <rect key="frame" x="241" y="484.66666666666669" width="102" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Highscore">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -306,7 +291,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="highscoreButton:" destination="Se5-8v-jxO" eventType="touchUpInside" id="Xrd-c9-AIz"/>
-                                    <segue destination="9UD-O5-BhT" kind="show" id="2fz-hY-iPm"/>
+                                    <segue destination="YEJ-EA-hSw" kind="show" id="JLL-KU-WeJ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Total points: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRv-tc-SYJ">
@@ -341,8 +326,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Qt8-Ec-e2f"/>
-        <segue reference="N9D-bf-DKL"/>
+        <segue reference="sQB-zV-NIo"/>
+        <segue reference="JLL-KU-WeJ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
