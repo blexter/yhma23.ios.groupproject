@@ -27,12 +27,9 @@ class DifficultyModes: UIViewController {
     
     func startGame(withDifficulty difficulty: Difficulty) {
         gameModel.selectWords(for: difficulty)
-        performSegue(withIdentifier: "startGame", sender: self)
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "startGame", let gameViewController = segue.destination as? GameViewController {
+        if let gameViewController = storyboard?.instantiateViewController(withIdentifier: "gameViewController") as? GameViewController {
             gameViewController.gameModel = gameModel
+            navigationController?.pushViewController(gameViewController, animated: true)
         }
     }
 
