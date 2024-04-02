@@ -43,6 +43,64 @@
             </objects>
             <point key="canvasLocation" x="1874.0458015267175" y="3.5211267605633805"/>
         </scene>
+        <!--Player-->
+        <scene sceneID="OCk-de-CGt">
+            <objects>
+                <viewController id="uf3-cQ-tDg" customClass="PlayerViewController" customModule="yhma23_ios_groupproject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4st-g6-pK4">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bu5-Ze-eGU">
+                                <rect key="frame" x="130" y="695" width="134" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="ZMF-n3-jTQ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Change Player"/>
+                                <connections>
+                                    <action selector="changeButton:" destination="uf3-cQ-tDg" eventType="touchUpInside" id="kx4-eq-Ag2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current player:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7V6-MT-p54">
+                                <rect key="frame" x="96" y="167" width="200" height="26.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlF-iS-tAW">
+                                <rect key="frame" x="16" y="201.33333333333334" width="361" height="39.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="361" id="JIp-mY-MT0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Izr-Ih-JJR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Izr-Ih-JJR" firstAttribute="bottom" secondItem="Bu5-Ze-eGU" secondAttribute="bottom" constant="39" id="4Bw-U9-puV"/>
+                            <constraint firstItem="7V6-MT-p54" firstAttribute="top" secondItem="Izr-Ih-JJR" secondAttribute="top" constant="108" id="Iuq-8K-NAc"/>
+                            <constraint firstItem="vlF-iS-tAW" firstAttribute="leading" secondItem="Izr-Ih-JJR" secondAttribute="leading" constant="16" id="KJy-on-S7P"/>
+                            <constraint firstItem="Izr-Ih-JJR" firstAttribute="trailing" secondItem="7V6-MT-p54" secondAttribute="trailing" constant="97" id="R3w-Ms-QFJ"/>
+                            <constraint firstItem="Izr-Ih-JJR" firstAttribute="trailing" secondItem="vlF-iS-tAW" secondAttribute="trailing" constant="16" id="RgM-lT-nI7"/>
+                            <constraint firstItem="vlF-iS-tAW" firstAttribute="top" secondItem="7V6-MT-p54" secondAttribute="bottom" constant="8" symbolic="YES" id="Z1J-b1-OGE"/>
+                            <constraint firstItem="Bu5-Ze-eGU" firstAttribute="leading" secondItem="Izr-Ih-JJR" secondAttribute="leading" constant="130" id="fb1-ms-bAb"/>
+                            <constraint firstItem="Izr-Ih-JJR" firstAttribute="trailing" secondItem="Bu5-Ze-eGU" secondAttribute="trailing" constant="129" id="rSk-ae-NVa"/>
+                            <constraint firstItem="7V6-MT-p54" firstAttribute="leading" secondItem="Izr-Ih-JJR" secondAttribute="leading" constant="96" id="skV-fH-y5A"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Player" image="person" catalog="system" selectedImage="person.fill" id="TDj-SG-BnR"/>
+                    <connections>
+                        <outlet property="playerNameLabel" destination="vlF-iS-tAW" id="dd0-Hx-Xl9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Hg-ml-VKN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-147.32824427480915" y="764.78873239436621"/>
+        </scene>
         <!--Highscore-->
         <scene sceneID="MH1-No-71T">
             <objects>
@@ -78,7 +136,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QgB-by-K3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="21" y="747"/>
+            <point key="canvasLocation" x="564" y="765"/>
         </scene>
         <!--Game Modes View-->
         <scene sceneID="YHI-PZ-oZd">
@@ -298,12 +356,14 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="aWs-zF-47j" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wwz-9g-Plk">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="A98-MY-Fbo" kind="relationship" relationship="viewControllers" id="yux-DG-vzb"/>
                         <segue destination="YEJ-EA-hSw" kind="relationship" relationship="viewControllers" id="J6S-N4-0fa"/>
+                        <segue destination="uf3-cQ-tDg" kind="relationship" relationship="viewControllers" id="gSI-wD-kpt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njO-uw-TxC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -333,6 +393,8 @@
     <resources>
         <image name="gamecontroller" catalog="system" width="128" height="79"/>
         <image name="gamecontroller.fill" catalog="system" width="128" height="79"/>
+        <image name="person" catalog="system" width="128" height="121"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="trophy" catalog="system" width="128" height="128"/>
         <image name="trophy.fill" catalog="system" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
