@@ -78,7 +78,10 @@ struct Word {
 struct Points {
     var correctWords : Int = 0
     var incorrectWords : Int = 0
-    var playerName : String
+}
+
+struct Player {
+    var name: String
 }
 
 enum Difficulty {
