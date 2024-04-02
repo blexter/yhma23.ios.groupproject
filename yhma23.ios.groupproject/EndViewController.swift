@@ -12,6 +12,7 @@ class EndViewController: UIViewController {
     @IBOutlet weak var totalPointsLabel: UILabel!
     
     @IBAction func playAgainButton(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func highscoreButton(_ sender: Any) {
