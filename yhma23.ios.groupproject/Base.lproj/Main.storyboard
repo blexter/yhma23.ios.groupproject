@@ -43,6 +43,22 @@
             </objects>
             <point key="canvasLocation" x="1874.0458015267175" y="3.5211267605633805"/>
         </scene>
+        <!--Player-->
+        <scene sceneID="H26-34-W5l">
+            <objects>
+                <viewController id="R42-pg-Ebi" customClass="PlayerViewController" customModule="yhma23_ios_groupproject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GtU-ag-TdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="9Da-hG-Ug8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Player" image="person" catalog="system" selectedImage="person.fill" id="VGb-Si-d52"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5CU-hH-VrY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-179" y="765"/>
+        </scene>
         <!--Highscore-->
         <scene sceneID="MH1-No-71T">
             <objects>
@@ -78,7 +94,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QgB-by-K3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="21" y="747"/>
+            <point key="canvasLocation" x="564" y="765"/>
         </scene>
         <!--Game Modes View-->
         <scene sceneID="YHI-PZ-oZd">
@@ -298,12 +314,14 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="aWs-zF-47j" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wwz-9g-Plk">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="A98-MY-Fbo" kind="relationship" relationship="viewControllers" id="yux-DG-vzb"/>
                         <segue destination="YEJ-EA-hSw" kind="relationship" relationship="viewControllers" id="J6S-N4-0fa"/>
+                        <segue destination="R42-pg-Ebi" kind="relationship" relationship="viewControllers" id="Wf5-BF-DTt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njO-uw-TxC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -333,6 +351,8 @@
     <resources>
         <image name="gamecontroller" catalog="system" width="128" height="79"/>
         <image name="gamecontroller.fill" catalog="system" width="128" height="79"/>
+        <image name="person" catalog="system" width="128" height="121"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="trophy" catalog="system" width="128" height="128"/>
         <image name="trophy.fill" catalog="system" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
