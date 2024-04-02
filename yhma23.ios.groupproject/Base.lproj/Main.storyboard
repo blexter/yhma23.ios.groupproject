@@ -44,20 +44,37 @@
             <point key="canvasLocation" x="1874.0458015267175" y="3.5211267605633805"/>
         </scene>
         <!--Player-->
-        <scene sceneID="H26-34-W5l">
+        <scene sceneID="OCk-de-CGt">
             <objects>
-                <viewController id="R42-pg-Ebi" customClass="PlayerViewController" customModule="yhma23_ios_groupproject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GtU-ag-TdC">
+                <viewController id="uf3-cQ-tDg" customClass="PlayerViewController" customModule="yhma23_ios_groupproject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4st-g6-pK4">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="9Da-hG-Ug8"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlF-iS-tAW">
+                                <rect key="frame" x="16" y="145" width="361" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Izr-Ih-JJR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Izr-Ih-JJR" firstAttribute="trailing" secondItem="vlF-iS-tAW" secondAttribute="trailing" constant="16" id="7kU-BT-6mQ"/>
+                            <constraint firstItem="vlF-iS-tAW" firstAttribute="leading" secondItem="Izr-Ih-JJR" secondAttribute="leading" constant="16" id="Wdd-W6-gIQ"/>
+                            <constraint firstItem="vlF-iS-tAW" firstAttribute="top" secondItem="Izr-Ih-JJR" secondAttribute="top" constant="86" id="ifa-4K-yVD"/>
+                            <constraint firstItem="Izr-Ih-JJR" firstAttribute="bottom" secondItem="vlF-iS-tAW" secondAttribute="bottom" constant="603" id="mEs-2r-egr"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Player" image="person" catalog="system" selectedImage="person.fill" id="VGb-Si-d52"/>
+                    <tabBarItem key="tabBarItem" title="Player" image="person" catalog="system" selectedImage="person.fill" id="TDj-SG-BnR"/>
+                    <connections>
+                        <outlet property="playerNameLabel" destination="vlF-iS-tAW" id="dd0-Hx-Xl9"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5CU-hH-VrY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Hg-ml-VKN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-179" y="765"/>
+            <point key="canvasLocation" x="-147.32824427480915" y="764.78873239436621"/>
         </scene>
         <!--Highscore-->
         <scene sceneID="MH1-No-71T">
@@ -321,7 +338,7 @@
                     <connections>
                         <segue destination="A98-MY-Fbo" kind="relationship" relationship="viewControllers" id="yux-DG-vzb"/>
                         <segue destination="YEJ-EA-hSw" kind="relationship" relationship="viewControllers" id="J6S-N4-0fa"/>
-                        <segue destination="R42-pg-Ebi" kind="relationship" relationship="viewControllers" id="Wf5-BF-DTt"/>
+                        <segue destination="uf3-cQ-tDg" kind="relationship" relationship="viewControllers" id="gSI-wD-kpt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njO-uw-TxC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -7,12 +7,17 @@
 
 import UIKit
 
-class PlayerViewController: UITabBarController {
+class PlayerViewController: UIViewController {
 
+    @IBOutlet weak var playerNameLabel: UILabel!
+    
+    var player = Player(name: "Default Player")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        playerNameLabel.text = player.name
     }
     
 
