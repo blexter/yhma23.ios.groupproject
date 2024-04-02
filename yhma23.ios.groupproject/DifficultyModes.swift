@@ -9,7 +9,7 @@ import UIKit
 
 
 
-class DifficultyModesViewController: UIViewController {
+class DifficultyModes: UIViewController {
     
     let words: [String] = ["easy1", "easy2", "easy3", "easy4", "easy5", "medium1", "medium2", "medium3", "medium4", "medium5", "hard1", "hard2", "hard3", "hard4", "hard5"]
     var selectedWords: [String] = []
