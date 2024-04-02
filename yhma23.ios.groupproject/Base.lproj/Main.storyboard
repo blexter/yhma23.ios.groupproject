@@ -51,9 +51,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bu5-Ze-eGU">
+                                <rect key="frame" x="130" y="695" width="134" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="ZMF-n3-jTQ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Change Player"/>
+                                <connections>
+                                    <action selector="changeButton:" destination="uf3-cQ-tDg" eventType="touchUpInside" id="kx4-eq-Ag2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current player:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7V6-MT-p54">
+                                <rect key="frame" x="96" y="167" width="200" height="26.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlF-iS-tAW">
-                                <rect key="frame" x="16" y="145" width="361" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <rect key="frame" x="16" y="201.33333333333334" width="361" height="39.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="361" id="JIp-mY-MT0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -61,10 +81,15 @@
                         <viewLayoutGuide key="safeArea" id="Izr-Ih-JJR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Izr-Ih-JJR" firstAttribute="trailing" secondItem="vlF-iS-tAW" secondAttribute="trailing" constant="16" id="7kU-BT-6mQ"/>
-                            <constraint firstItem="vlF-iS-tAW" firstAttribute="leading" secondItem="Izr-Ih-JJR" secondAttribute="leading" constant="16" id="Wdd-W6-gIQ"/>
-                            <constraint firstItem="vlF-iS-tAW" firstAttribute="top" secondItem="Izr-Ih-JJR" secondAttribute="top" constant="86" id="ifa-4K-yVD"/>
-                            <constraint firstItem="Izr-Ih-JJR" firstAttribute="bottom" secondItem="vlF-iS-tAW" secondAttribute="bottom" constant="603" id="mEs-2r-egr"/>
+                            <constraint firstItem="Izr-Ih-JJR" firstAttribute="bottom" secondItem="Bu5-Ze-eGU" secondAttribute="bottom" constant="39" id="4Bw-U9-puV"/>
+                            <constraint firstItem="7V6-MT-p54" firstAttribute="top" secondItem="Izr-Ih-JJR" secondAttribute="top" constant="108" id="Iuq-8K-NAc"/>
+                            <constraint firstItem="vlF-iS-tAW" firstAttribute="leading" secondItem="Izr-Ih-JJR" secondAttribute="leading" constant="16" id="KJy-on-S7P"/>
+                            <constraint firstItem="Izr-Ih-JJR" firstAttribute="trailing" secondItem="7V6-MT-p54" secondAttribute="trailing" constant="97" id="R3w-Ms-QFJ"/>
+                            <constraint firstItem="Izr-Ih-JJR" firstAttribute="trailing" secondItem="vlF-iS-tAW" secondAttribute="trailing" constant="16" id="RgM-lT-nI7"/>
+                            <constraint firstItem="vlF-iS-tAW" firstAttribute="top" secondItem="7V6-MT-p54" secondAttribute="bottom" constant="8" symbolic="YES" id="Z1J-b1-OGE"/>
+                            <constraint firstItem="Bu5-Ze-eGU" firstAttribute="leading" secondItem="Izr-Ih-JJR" secondAttribute="leading" constant="130" id="fb1-ms-bAb"/>
+                            <constraint firstItem="Izr-Ih-JJR" firstAttribute="trailing" secondItem="Bu5-Ze-eGU" secondAttribute="trailing" constant="129" id="rSk-ae-NVa"/>
+                            <constraint firstItem="7V6-MT-p54" firstAttribute="leading" secondItem="Izr-Ih-JJR" secondAttribute="leading" constant="96" id="skV-fH-y5A"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Player" image="person" catalog="system" selectedImage="person.fill" id="TDj-SG-BnR"/>
