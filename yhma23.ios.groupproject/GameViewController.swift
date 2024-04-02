@@ -36,17 +36,19 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         countdownLabel.textColor = UIColor.blue
         view.addSubview(countdownLabel)
         
-        // setting up gamemodel object and starting the countdown method
-        
+        wordLabel.alpha = 0
         startCountdown(from: 3)
         
         inputWordTextField.delegate = self
+    
         
     }
     
     
     func startCountdown(from number: Int) {
+        countdownLabel.center = CGPoint(x: view.frame.size.width / 2, y: (view.frame.size.height / 2) - 100)
         countdownLabel.isHidden = false
+        
         gameModel.startCountdown(from: number, onUpdate: { [weak self] remainingTime in
             DispatchQueue.main.async {
                 self?.countdownLabel.text = "\(remainingTime)"
@@ -54,13 +56,12 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         }, onComplete: { [weak self] in
             DispatchQueue.main.async {
                 self?.countdownLabel.isHidden = true
-                self?.startFallingAnimation() // Starta animationen när nedräkningen är klar
+                self?.fadeInWord()
             }
         })
     }
     
-    func startFallingAnimation() {
-        // check to see if there is any words chosen
+    func fadeInWord() {
         if gameModel.selectedWords.isEmpty {
             displayGameFinishMessage()
             return
@@ -72,23 +73,55 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        // position label for animation
-        wordLabel.center = CGPoint(x: view.frame.size.width / 2, y: -wordLabel.frame.size.height / 2)
+        wordLabel.center = CGPoint(x: view.frame.size.width / 2, y: view.frame.size.height / 2)
         wordLabel.text = nextWord
+        wordLabel.alpha = 0
         
-        // start the animation
-        UIView.animate(withDuration: 4.0, animations: {
-            self.wordLabel.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height + self.wordLabel.frame.size.height / 2)
-        }, completion: { _ in
-            if self.gameModel.hasMoreWords() {
-                self.startFallingAnimation()
-            } else {
-                self.wordLabel.isHidden = true
-                self.displayGameFinishMessage()
-            }
-        })
+        UIView.animate(withDuration: 1.0) {
+            self.wordLabel.alpha = 1
+        }
+        
+        startWordTimer()
     }
+
+
+
+    func startWordTimer() {
+        var wordTimerValue = 5
+        countdownLabel.isHidden = false
+        countdownLabel.text = "\(wordTimerValue)"
+
+        let wordTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            DispatchQueue.main.async {
+                wordTimerValue -= 1
+                self?.countdownLabel.text = "\(wordTimerValue)"
+
+                if wordTimerValue == 0 {
+                    UIView.animate(withDuration: 1.0) {
+                        self?.wordLabel.alpha = 0
+                    }
+                }
+
+                if wordTimerValue < 0 {
+                    timer.invalidate()
+                    self?.countdownLabel.isHidden = true
     
+                    if self?.gameModel.hasMoreWords() == true {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self?.fadeInWord()
+                        }
+                    } else {
+                        self?.displayGameFinishMessage()
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
     
     
     func displayGameFinishMessage() {
