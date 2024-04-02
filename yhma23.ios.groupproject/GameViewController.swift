@@ -9,8 +9,8 @@ import UIKit
 
 class GameViewController: UIViewController, UITextFieldDelegate {
     
-    var gameModel = GameModel()
     var countdownLabel: UILabel!
+    var gameModel = GameModel()
     
     @IBOutlet weak var currentPointsLabel: UILabel!
     @IBOutlet weak var wordLabel: UILabel!
@@ -20,18 +20,13 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     var currentWordIndex = 0
     var words: [String] = []
     
-    
-    
     @IBAction func okButton(_ sender: Any) {
         
     }
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         // Do any additional setup after loading the view.
         
         countdownLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
@@ -42,9 +37,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(countdownLabel)
         
         // setting up gamemodel object and starting the countdown method
-        gameModel = GameModel()
-        startCountdown(from: 3)
         
+        startCountdown(from: 3)
         
         inputWordTextField.delegate = self
         
@@ -66,6 +60,12 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     }
     
     func startFallingAnimation() {
+        // Kontrollera först om det finns några ord valda
+        if gameModel.selectedWords.isEmpty {
+            displayGameFinishMessage()
+            return
+        }
+        
         guard let nextWord = gameModel.getNextWord() else {
             wordLabel.isHidden = true
             displayGameFinishMessage()
@@ -78,9 +78,9 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         
         // start the animation
         UIView.animate(withDuration: 4.0, animations: {
-            self.wordLabel.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 2)
+            self.wordLabel.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height + self.wordLabel.frame.size.height / 2)
         }, completion: { _ in
-            if self.gameModel.hasMoreWords(){
+            if self.gameModel.hasMoreWords() {
                 self.startFallingAnimation()
             } else {
                 self.wordLabel.isHidden = true
@@ -88,6 +88,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             }
         })
     }
+    
     
     
     func displayGameFinishMessage() {
@@ -106,42 +107,22 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    var lastPointAwardedWordIndex = -1
-    
-    // This function watches the text field for changes and updates the game state consequently
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Combine current text and the replacement text to get the updated text
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         
-        // Check if updated text matches current word
-        if updatedText == words[currentWordIndex - 1] && currentWordIndex != lastPointAwardedWordIndex {
-            // If it matches and the current word index is different from the last one, increase the score
-            let currentPoints = Int(currentPointsLabel.text ?? "0") ?? 0
-            currentPointsLabel.text = String(currentPoints + 1)
+        // Anropa GameModel för att kontrollera den uppdaterade texten och besluta om poäng ska tilldelas.
+        if gameModel.checkAndUpdateScore(with: updatedText) {
+            // Uppdatera UI baserat på att användaren matat in ett korrekt ord.
+            currentPointsLabel.text = String(gameModel.score)
             
-            // Update the last word index for which a point was awarded
-            lastPointAwardedWordIndex = currentWordIndex
-            
-            // Clear the input field for the next word
+            // Rensa textfältet för nästa ord.
             textField.text = ""
             return false
         }
         
         return true
     }
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
