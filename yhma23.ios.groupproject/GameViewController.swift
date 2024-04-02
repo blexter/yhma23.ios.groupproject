@@ -46,7 +46,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     
     func startCountdown(from number: Int) {
-        countdownLabel.isHidden = false // Se till att etiketten är synlig
+        countdownLabel.isHidden = false
         gameModel.startCountdown(from: number, onUpdate: { [weak self] remainingTime in
             DispatchQueue.main.async {
                 self?.countdownLabel.text = "\(remainingTime)"
@@ -60,7 +60,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     }
     
     func startFallingAnimation() {
-        // Kontrollera först om det finns några ord valda
+        // check to see if there is any words chosen
         if gameModel.selectedWords.isEmpty {
             displayGameFinishMessage()
             return
@@ -112,12 +112,12 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         
-        // Anropa GameModel för att kontrollera den uppdaterade texten och besluta om poäng ska tilldelas.
+        // call GameModel to control that it updates the text and decide if a point should be added
         if gameModel.checkAndUpdateScore(with: updatedText) {
-            // Uppdatera UI baserat på att användaren matat in ett korrekt ord.
+            // update UI based on users input
             currentPointsLabel.text = String(gameModel.score)
             
-            // Rensa textfältet för nästa ord.
+            // clear textfield for next word
             textField.text = ""
             return false
         }
