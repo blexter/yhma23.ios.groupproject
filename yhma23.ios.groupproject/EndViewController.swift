@@ -18,12 +18,29 @@ class EndViewController: UIViewController {
     @IBAction func highscoreButton(_ sender: Any) {
     }
     
+    var totalPoints: Int = 0 {
+        didSet {
+            updatePointsDisplay()
+        }
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        updatePointsDisplay()
 
         // Do any additional setup after loading the view.
     }
     
+    func updatePointsDisplay() {
+        if isViewLoaded {
+            DispatchQueue.main.async {
+                self.totalPointsLabel.text = "Total Points: \(self.totalPoints)"
+            }
+        }
+    }
+
+
 
     /*
     // MARK: - Navigation

@@ -285,7 +285,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="okButton:" destination="6GA-c4-81N" eventType="touchUpInside" id="jcA-59-q3h"/>
-                                    <segue destination="Se5-8v-jxO" kind="show" id="YYb-Qx-HzU"/>
+                                    <segue destination="Se5-8v-jxO" kind="show" identifier="endViewSegue" id="YYb-Qx-HzU"/>
                                 </connections>
                             </button>
                         </subviews>

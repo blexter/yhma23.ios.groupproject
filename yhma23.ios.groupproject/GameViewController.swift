@@ -162,4 +162,12 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "endViewSegue", let destinationVC = segue.destination as? EndViewController {
+            destinationVC.totalPoints = self.gameModel.score
+        }
+    }
+
+    
+    
 }
