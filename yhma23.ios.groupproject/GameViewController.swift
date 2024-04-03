@@ -21,7 +21,13 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     var words: [String] = []
     
     @IBAction func okButton(_ sender: Any) {
-        
+        var playerName: String {
+            return UserDefaults.standard.string(forKey: "PlayerName") ?? "Unknown Player"
+        }
+        let finalScore = gameModel.score
+        let highscoreEntry = HighscoresManager.HighscoreEntry(player: playerName, score: finalScore)
+        HighscoresManager.saveHighscore(highscoreEntry)
+
     }
     
     
@@ -140,8 +146,9 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         // Delay to display the game finish message
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.view.addSubview(gameFinishLabel)
-            
+        
         }
+    
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

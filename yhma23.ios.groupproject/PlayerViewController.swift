@@ -15,7 +15,6 @@ class PlayerViewController: UIViewController {
     
     
     @IBAction func changeButton(_ sender: UIButton) {
-        
         let alert = UIAlertController(title: "Change Player Name", message: "Enter a new player name", preferredStyle: .alert)
         
         alert.addTextField { textField in
@@ -27,9 +26,11 @@ class PlayerViewController: UIViewController {
         let change = UIAlertAction(title: "Change", style: .default) { [weak self, weak alert] _ in
             guard let alertController = alert, let textField = alertController.textFields?.first else { return }
             
-            self?.player.name = textField.text ?? ""
+            let newName = textField.text ?? "Default Player"
+            UserDefaults.standard.set(newName, forKey: "PlayerName")
             
-            self?.playerNameLabel.text = self?.player.name
+            self?.player.name = newName
+            self?.playerNameLabel.text = newName
         }
         
         alert.addAction(cancel)
@@ -37,12 +38,16 @@ class PlayerViewController: UIViewController {
         
         present(alert, animated: true)
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        playerNameLabel.text = player.name
+        let savedName = UserDefaults.standard.string(forKey: "PlayerName") ?? "Default Player"
+            player.name = savedName
+            playerNameLabel.text = savedName
     }
+    
+    
     
 }
