@@ -126,6 +126,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             self?.countdownLabel.text = "\(remainingTime)"
         }, onComplete: { [weak self] in
             self?.prepareNextWord()
+            self?.gameModel.minusPoints()
+            self?.currentPointsLabel.text = String(self?.gameModel.score ?? 0)
         })
     }
 

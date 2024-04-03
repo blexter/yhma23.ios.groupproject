@@ -105,17 +105,25 @@ class GameModel {
     }
     
     func checkAndUpdateScore(with input: String) -> Bool {
-            guard currentWordIndex < selectedWords.count, currentWordIndex != lastPointAwardedWordIndex else { return false }
-            
-            if input == selectedWords[currentWordIndex - 1] {
-                score += 1
-                lastPointAwardedWordIndex = currentWordIndex
-                return true
-            }
-            return false
+        guard currentWordIndex < selectedWords.count, currentWordIndex != lastPointAwardedWordIndex else { return false }
+        
+        if input == selectedWords[currentWordIndex - 1] {
+            score += 1
+            lastPointAwardedWordIndex = currentWordIndex
+            return true
         }
+        
+        return false
+        
+    }
     
+    func minusPoints() {
+            score -= 1
+    }
+
 }
+
+
 
 struct Word {
     var text : String
