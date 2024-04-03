@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aWs-zF-47j">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aWs-zF-47j">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -249,35 +249,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Hw-MZ-bAX">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write the word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Hw-MZ-bAX">
                                 <rect key="frame" x="25" y="404" width="343" height="34"/>
+                                <color key="backgroundColor" red="0.637891572543966" green="0.52152320806121044" blue="0.3725126371985476" alpha="0.34688562925170069" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write the word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2b-tl-Inn">
-                                <rect key="frame" x="31" y="458" width="130" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="eNC-s4-ccF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lE-JA-1tW">
-                                <rect key="frame" x="215" y="450" width="130" height="34.333333333333314"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="Qmu-sQ-YK5"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Ok">
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="baseBackgroundColor" red="1" green="0.91265018019999999" blue="0.87650665849999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="okButton:" destination="6GA-c4-81N" eventType="touchUpInside" id="jcA-59-q3h"/>
-                                    <segue destination="Se5-8v-jxO" kind="show" id="YYb-Qx-HzU"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current points: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mX-yV-m5D">
                                 <rect key="frame" x="25" y="40" width="135" height="24"/>
                                 <constraints>
@@ -296,6 +273,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lE-JA-1tW">
+                                <rect key="frame" x="226" y="464" width="130" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="Qmu-sQ-YK5"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Finish">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" red="1" green="0.91265018019999999" blue="0.87650665849999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="okButton:" destination="6GA-c4-81N" eventType="touchUpInside" id="jcA-59-q3h"/>
+                                    <segue destination="Se5-8v-jxO" kind="show" id="YYb-Qx-HzU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JQS-c0-LGi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -306,9 +298,7 @@
                             <constraint firstItem="JQS-c0-LGi" firstAttribute="trailing" secondItem="5mX-yV-m5D" secondAttribute="trailing" constant="233" id="GbR-ZF-oUj"/>
                             <constraint firstItem="R6p-0X-qND" firstAttribute="top" secondItem="oip-ll-BRO" secondAttribute="bottom" constant="96" id="JiS-4C-zWR"/>
                             <constraint firstItem="8lE-JA-1tW" firstAttribute="top" secondItem="0Hw-MZ-bAX" secondAttribute="bottom" constant="12" id="URS-f5-fdE"/>
-                            <constraint firstItem="f2b-tl-Inn" firstAttribute="top" secondItem="0Hw-MZ-bAX" secondAttribute="bottom" constant="20" id="Wdl-oJ-6cI"/>
                             <constraint firstItem="0Hw-MZ-bAX" firstAttribute="centerY" secondItem="k0X-uZ-3YY" secondAttribute="centerY" id="Xbm-Mq-3P1"/>
-                            <constraint firstItem="f2b-tl-Inn" firstAttribute="leading" secondItem="JQS-c0-LGi" secondAttribute="leading" constant="31" id="YeS-KX-N90"/>
                             <constraint firstItem="R6p-0X-qND" firstAttribute="leading" secondItem="oip-ll-BRO" secondAttribute="leading" id="e7Z-Tq-12m"/>
                             <constraint firstItem="0Hw-MZ-bAX" firstAttribute="centerX" secondItem="k0X-uZ-3YY" secondAttribute="centerX" id="hEL-4z-VlG"/>
                             <constraint firstItem="JQS-c0-LGi" firstAttribute="trailing" secondItem="0Hw-MZ-bAX" secondAttribute="trailing" constant="25" id="hEv-8d-npP"/>
@@ -324,7 +314,6 @@
                         <outlet property="currentPointsLabel" destination="oip-ll-BRO" id="nrv-aR-OfV"/>
                         <outlet property="inputWordTextField" destination="0Hw-MZ-bAX" id="syQ-sA-gFB"/>
                         <outlet property="wordLabel" destination="R6p-0X-qND" id="3qs-8z-EwF"/>
-                        <outlet property="writeTheWordLabel" destination="f2b-tl-Inn" id="r8w-ho-Zxp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSd-Vp-4Bc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
