@@ -9,11 +9,32 @@ import Foundation
 
 class GameModel {
     
-    // List total words must be % 3 == 0 following easy-medium-hard order
-    private let words: [String] = ["Gurkan", "ÄR", "arg", "På", "pEnnAn",
-                                   "Långsamt", "Fönsterputsare", "Krokodildjur", "Hemlighusnyckel", "ÖverImorgon",
-                                   "MikrovågsugnsuppvÄrmninG", "SamhäLlsutvecklinGsstrategi", "ArbetsmIljöskyddsinspektör", "OlIvträdgårdsmäÄstare", "Mellanmjölksglass"
+    private let wordsEasy: [String] = [
+        "Katt", "Hund", "Hus", "Bok", "Penna", "Äpple", "Bil", "Träd", "Sol", "Måne",
+        "Stol", "Bord", "Skor", "Klocka", "Dörr", "Fönster", "Vägg", "Golv", "Tak", "Lampa",
+        "Blomma", "Gräs", "Regn", "Snö", "Is", "Matta", "Säng", "Kudde", "Tallrik", "Gaffel",
+        "Kniv", "Sked", "Glas", "Bokhylla", "Spegel", "Boll", "Dator", "Mobil", "Nyckel", "Leksak",
+        "Fågel", "Fisk", "Groda", "Björn", "Elefant", "Giraff", "Lejon", "Tiger", "Zebra", "Ko"
     ]
+    
+    private let wordsMedium: [String] = [
+        "Kamel", "Känguru", "Flodhäst", "Noshörning", "Krokodil", "Alligator", "Igelkott", "Skunk", "Tvättbjörn", "Panda",
+        "Orkan", "Ciklon", "Tsunami", "Jordskalv", "Vulkan", "Meteorit", "Asteroid", "Kompass", "Teleskop", "Mikroskop",
+        "Katalysator", "Fotosyntes", "Evaporation", "Kondensation", "Sublimation", "Destillation", "Erosion", "Sedimentering", "Oxidation", "Reduktion",
+        "Polär", "Ekvator", "Meridian", "Longitud", "Latitud", "Biosfär", "Stratosfär", "Troposfär", "Mesosfär", "Termosfär",
+        "Biografi", "Autobiografi", "Manuskript", "Monolog", "Dialog", "Prolog", "Epilog", "Synopsis", "Antologi", "Bibliografi"
+    ]
+    
+    private let wordsHard: [String] = [
+        "Quasar", "Nebulosa", "Supernova", "Hypernova", "Svart hål", "Vit dvärg", "Neutronstjärna", "Pulsar", "Gammastrålning", "Röd jätte",
+        "Kvantmekanik", "Relativitetsteorin", "Supersträngteori", "Higgs boson", "Mörk materia", "Mörk energi", "Entropi", "Singularity", "Plancks konstant", "Heisenbergs osäkerhetsprincip",
+        "Kryptoanalys", "Steganografi", "Kryptografi", "Blockchain", "Asymmetrisk kryptering", "Symmetrisk kryptering", "Hashfunktion", "Digital signatur", "Public key", "Private key",
+        "Epistemologi", "Ontologi", "Metafysik", "Deontologi", "Utilitarism", "Existentialism", "Fenomenologi", "Hermeneutik", "Postmodernism", "Strukturalism",
+        "Palindrom", "Anagram", "Akronym", "Homonym", "Synonym", "Antonym", "Eufemism", "Onomatopoei", "Alliteration", "Assonans"
+    ]
+
+
+
     
     private var currentWordIndex = 0
     private var lastPointAwardedWordIndex = -1
@@ -27,20 +48,41 @@ class GameModel {
     func selectWords(for difficulty: Difficulty) {
         switch difficulty {
         case .easy:
-            selectedWords = Array(words[0...4])
+            selectedWords = Array(wordsEasy.shuffled())
         case .medium:
-            selectedWords = Array(words[5...9])
+            selectedWords = Array(wordsMedium.shuffled())
         case .hard:
-            selectedWords = Array(words[10...14])
+            selectedWords = Array(wordsHard.shuffled())
         }
     }
 
+    func startWordTimer(onUpdate: @escaping (Int) -> Void, onComplete: @escaping () -> Void) {
+        stopWordTimer()
+        var wordTimerValue = 5
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            DispatchQueue.main.async {
+                if wordTimerValue >= 0 {
+                    onUpdate(wordTimerValue)
+                    wordTimerValue -= 1
+                } else {
+                    self?.stopWordTimer()
+                    onComplete()
+                }
+            }
+        }
+    }
+    
+    func stopWordTimer() {
+        countdownTimer?.invalidate()
+        countdownTimer = nil
+    }
+    
     
     func startCountdown(from number: Int, onUpdate: @escaping (Int) -> Void, onComplete: @escaping () -> Void) {
         countdownValue = number
         countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             guard let self = self else { return }
-            if self.countdownValue > 0 {
+            if self.countdownValue >= 0 {
                 onUpdate(self.countdownValue)
                 self.countdownValue -= 1
             } else {
