@@ -31,5 +31,13 @@ class HighscoreTableViewController: UITableViewController {
         cell.textLabel?.text = "\(score.player): \(score.score)"
         return cell
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        highscores = HighscoresManager.loadHighscores()
+        tableView.reloadData()
+    }
+
+    
 }
 
