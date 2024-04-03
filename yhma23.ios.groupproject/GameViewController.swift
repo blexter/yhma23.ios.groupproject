@@ -39,7 +39,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
         wordLabel.alpha = 0
         startCountdown(from: 3)
         
@@ -71,7 +70,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     func startGameTimer() {
         gameTimeRemaining = 30
-        gameTimer?.invalidate() // Stoppa tidigare timer om den finns.
+        gameTimer?.invalidate()
         
         gameTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             self?.gameTimerTick()
@@ -79,15 +78,24 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     }
 
     func gameTimerTick() {
+        var isPulsingStarted = false
         gameTimeRemaining -= 1
-        self.timeRemainingLabel.text = "\(self.gameTimeRemaining)" // Säkerställ att detta är korrekt
+        self.timeRemainingLabel.text = "\(self.gameTimeRemaining)"
         
         if gameTimeRemaining <= 0 {
             gameTimer?.invalidate()
-            endGame() // Hantera slutet av spelet här.
+            self.timeRemainingLabel.layer.removeAllAnimations() // stops the animation
+            endGame()
+        } else if gameTimeRemaining <= 10 {
+            self.timeRemainingLabel.textColor = UIColor.red
+            // starts the animation
+            if !isPulsingStarted {
+                pulseAnimation()
+                isPulsingStarted = true
+            }
         }
     }
-    
+
     func endGame() {
         gameModel.stopWordTimer()
         countdownLabel.isHidden = true
@@ -157,6 +165,16 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         }
     
     }
+    
+    func pulseAnimation() {
+        UIView.animate(withDuration: 0.5,
+            delay: 0,
+            options: [.autoreverse, .repeat],
+            animations: { [weak self] in
+                self?.timeRemainingLabel.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            }, completion: nil)
+    }
+
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
