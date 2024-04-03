@@ -9,19 +9,32 @@ import Foundation
 
 class GameModel {
     
-    // List total words must be % 3 == 0 following easy-medium-hard order
-    private let words: [String] = ["Gurkan", "Båt", "Tomat", "Bil", "Penna",
-                                   "Långsamt", "Fönsterputsare", "Krokodildjur", "Hemlighusnyckel", "ÖverImorgon",
-                                   "MikrovågsugnsuppvÄrmninG", "SamhäLlsutvecklinGsstrategi", "ArbetsmIljöskyddsinspektör", "OlIvträdgårdsmäÄstare", "Mellanmjölksglass"
+    private let wordsEasy: [String] = [
+        "Katt", "Hund", "Hus", "Bok", "Penna", "Äpple", "Bil", "Träd", "Sol", "Måne",
+        "Stol", "Bord", "Skor", "Klocka", "Dörr", "Fönster", "Vägg", "Golv", "Tak", "Lampa",
+        "Blomma", "Gräs", "Regn", "Snö", "Is", "Matta", "Säng", "Kudde", "Tallrik", "Gaffel",
+        "Kniv", "Sked", "Glas", "Bokhylla", "Spegel", "Boll", "Dator", "Mobil", "Nyckel", "Leksak",
+        "Fågel", "Fisk", "Groda", "Björn", "Elefant", "Giraff", "Lejon", "Tiger", "Zebra", "Ko"
     ]
     
-    private let wordsEasy: [String] = [
-        "Gurka", "Tomat", "Bil", "Båt", "Matta", "Boll", "Sol", "Moln", "Katt", "Hund",
-        "Röd", "Grön", "Bok", "Stol", "Fågel", "Träd", "Skor", "Hus", "Fönster", "Dörr",
-        "Vatten", "Blomma", "Sten", "Sand", "Gräs", "Snö", "Regn", "Åska", "Berg", "Dal",
-        "Äpple", "Banan", "Orange", "Penna", "Papper", "Bord", "Lampa", "Nyckel", "Telefon", "Sked",
-        "Gaffel", "Kniv", "Tallrik", "Kopp", "Glas", "Hatt", "Jacka", "Byxor", "Tröja", "Skjorta"
+    private let wordsMedium: [String] = [
+        "Kamel", "Känguru", "Flodhäst", "Noshörning", "Krokodil", "Alligator", "Igelkott", "Skunk", "Tvättbjörn", "Panda",
+        "Orkan", "Ciklon", "Tsunami", "Jordskalv", "Vulkan", "Meteorit", "Asteroid", "Kompass", "Teleskop", "Mikroskop",
+        "Katalysator", "Fotosyntes", "Evaporation", "Kondensation", "Sublimation", "Destillation", "Erosion", "Sedimentering", "Oxidation", "Reduktion",
+        "Polär", "Ekvator", "Meridian", "Longitud", "Latitud", "Biosfär", "Stratosfär", "Troposfär", "Mesosfär", "Termosfär",
+        "Biografi", "Autobiografi", "Manuskript", "Monolog", "Dialog", "Prolog", "Epilog", "Synopsis", "Antologi", "Bibliografi"
     ]
+    
+    private let wordsHard: [String] = [
+        "Quasar", "Nebulosa", "Supernova", "Hypernova", "Svart hål", "Vit dvärg", "Neutronstjärna", "Pulsar", "Gammastrålning", "Röd jätte",
+        "Kvantmekanik", "Relativitetsteorin", "Supersträngteori", "Higgs boson", "Mörk materia", "Mörk energi", "Entropi", "Singularity", "Plancks konstant", "Heisenbergs osäkerhetsprincip",
+        "Kryptoanalys", "Steganografi", "Kryptografi", "Blockchain", "Asymmetrisk kryptering", "Symmetrisk kryptering", "Hashfunktion", "Digital signatur", "Public key", "Private key",
+        "Epistemologi", "Ontologi", "Metafysik", "Deontologi", "Utilitarism", "Existentialism", "Fenomenologi", "Hermeneutik", "Postmodernism", "Strukturalism",
+        "Palindrom", "Anagram", "Akronym", "Homonym", "Synonym", "Antonym", "Eufemism", "Onomatopoei", "Alliteration", "Assonans"
+    ]
+
+
+
     
     private var currentWordIndex = 0
     private var lastPointAwardedWordIndex = -1
@@ -37,9 +50,9 @@ class GameModel {
         case .easy:
             selectedWords = Array(wordsEasy.shuffled())
         case .medium:
-            selectedWords = Array(words[5...9])
+            selectedWords = Array(wordsMedium.shuffled())
         case .hard:
-            selectedWords = Array(words[10...14])
+            selectedWords = Array(wordsHard.shuffled())
         }
     }
 

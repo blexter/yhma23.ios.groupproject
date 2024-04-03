@@ -9,7 +9,7 @@ import UIKit
 
 class GameViewController: UIViewController, UITextFieldDelegate {
     
-    var countdownLabel: UILabel!
+    
     var gameModel = GameModel()
     var gameTimer: Timer?
     var gameTimeRemaining: Int = 30
@@ -19,6 +19,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var writeTheWordLabel: UILabel!
     @IBOutlet weak var inputWordTextField: UITextField!
     @IBOutlet weak var timeRemainingLabel: UILabel!
+    @IBOutlet weak var countdownLabel: UILabel!
     
     var currentWordIndex = 0
     var words: [String] = []
@@ -38,12 +39,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        countdownLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-        countdownLabel.center = CGPoint(x: view.frame.size.width / 2, y: view.frame.size.height / 2)
-        countdownLabel.textAlignment = .center
-        countdownLabel.font = UIFont.boldSystemFont(ofSize: 48)
-        countdownLabel.textColor = UIColor.blue
-        view.addSubview(countdownLabel)
         
         wordLabel.alpha = 0
         startCountdown(from: 3)
