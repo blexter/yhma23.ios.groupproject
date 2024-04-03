@@ -40,13 +40,14 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         startCountdown(from: 3)
         
         inputWordTextField.delegate = self
-    
+        inputWordTextField.isEnabled = false
+
         
     }
     
     
     func startCountdown(from number: Int) {
-        countdownLabel.center = CGPoint(x: view.frame.size.width / 2, y: (view.frame.size.height / 2) - 100)
+        countdownLabel.center = CGPoint(x: view.frame.size.width / 2, y: (view.frame.size.height / 2) - 150)
         countdownLabel.isHidden = false
         
         gameModel.startCountdown(from: number, onUpdate: { [weak self] remainingTime in
@@ -57,6 +58,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             DispatchQueue.main.async {
                 self?.countdownLabel.isHidden = true
                 self?.fadeInWord()
+                self?.inputWordTextField.isEnabled = true
+                self?.inputWordTextField.becomeFirstResponder()
             }
         })
     }
@@ -91,7 +94,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         countdownLabel.isHidden = false
         countdownLabel.text = "\(wordTimerValue)"
 
-        let wordTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+        _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
             DispatchQueue.main.async {
                 wordTimerValue -= 1
                 self?.countdownLabel.text = "\(wordTimerValue)"
@@ -127,7 +130,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     func displayGameFinishMessage() {
         // New label for the game finish message
         let gameFinishLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
-        gameFinishLabel.center = CGPoint(x: view.frame.size.width / 2, y: view.frame.size.height / 2)
+        
+        gameFinishLabel.center = CGPoint(x: view.frame.size.width / 2, y: (view.frame.size.height / 2) - 150)
         gameFinishLabel.textAlignment = .center
         gameFinishLabel.font = UIFont.boldSystemFont(ofSize: 22)
         gameFinishLabel.textColor = UIColor.red
