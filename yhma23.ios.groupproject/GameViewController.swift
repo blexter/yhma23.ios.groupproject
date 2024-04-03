@@ -11,11 +11,14 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     var countdownLabel: UILabel!
     var gameModel = GameModel()
+    var gameTimer: Timer?
+    var gameTimeRemaining: Int = 30
     
     @IBOutlet weak var currentPointsLabel: UILabel!
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var writeTheWordLabel: UILabel!
     @IBOutlet weak var inputWordTextField: UITextField!
+    @IBOutlet weak var timeRemainingLabel: UILabel!
     
     var currentWordIndex = 0
     var words: [String] = []
@@ -66,8 +69,36 @@ class GameViewController: UIViewController, UITextFieldDelegate {
                 self?.fadeInWord()
                 self?.inputWordTextField.isEnabled = true
                 self?.inputWordTextField.becomeFirstResponder()
+                self?.startGameTimer()
             }
         })
+    }
+    
+    func startGameTimer() {
+        gameTimeRemaining = 30
+        gameTimer?.invalidate() // Stoppa tidigare timer om den finns.
+        
+        gameTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            self?.gameTimerTick()
+        }
+    }
+
+    func gameTimerTick() {
+        gameTimeRemaining -= 1
+        self.timeRemainingLabel.text = "\(self.gameTimeRemaining)" // Säkerställ att detta är korrekt
+        
+        if gameTimeRemaining <= 0 {
+            gameTimer?.invalidate()
+            endGame() // Hantera slutet av spelet här.
+        }
+    }
+    
+    func endGame() {
+        gameModel.stopWordTimer()
+        countdownLabel.isHidden = true
+        inputWordTextField.isEnabled = false
+        inputWordTextField.isHidden = true
+        displayGameFinishMessage()
     }
     
     func fadeInWord() {
@@ -90,48 +121,27 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             self.wordLabel.alpha = 1
         }
         
-        startWordTimer()
+        countdownLabel.isHidden = true
+        startNewWordTimer()
+    }
+    
+    func startNewWordTimer() {
+        countdownLabel.isHidden = false
+        gameModel.startWordTimer(onUpdate: { [weak self] remainingTime in
+            self?.countdownLabel.text = "\(remainingTime)"
+        }, onComplete: { [weak self] in
+            self?.prepareNextWord()
+        })
     }
 
-
-
-    func startWordTimer() {
-        var wordTimerValue = 5
-        countdownLabel.isHidden = false
-        countdownLabel.text = "\(wordTimerValue)"
-
-        _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
-            DispatchQueue.main.async {
-                wordTimerValue -= 1
-                self?.countdownLabel.text = "\(wordTimerValue)"
-
-                if wordTimerValue == 0 {
-                    UIView.animate(withDuration: 1.0) {
-                        self?.wordLabel.alpha = 0
-                    }
-                }
-
-                if wordTimerValue < 0 {
-                    timer.invalidate()
-                    self?.countdownLabel.isHidden = true
     
-                    if self?.gameModel.hasMoreWords() == true {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            self?.fadeInWord()
-                        }
-                    } else {
-                        self?.displayGameFinishMessage()
-                    }
-                }
-            }
+    func prepareNextWord() {
+        if gameModel.hasMoreWords() {
+            fadeInWord()
+        } else {
+            countdownLabel.isHidden = true
         }
     }
-
-
-
-
-
-    
     
     func displayGameFinishMessage() {
         // New label for the game finish message
@@ -163,6 +173,10 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             
             // clear textfield for next word
             textField.text = ""
+            
+            gameModel.stopWordTimer()
+            prepareNextWord()
+            
             return false
         }
         

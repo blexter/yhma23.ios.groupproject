@@ -10,9 +10,17 @@ import Foundation
 class GameModel {
     
     // List total words must be % 3 == 0 following easy-medium-hard order
-    private let words: [String] = ["Gurkan", "ÄR", "arg", "På", "pEnnAn",
+    private let words: [String] = ["Gurkan", "Båt", "Tomat", "Bil", "Penna",
                                    "Långsamt", "Fönsterputsare", "Krokodildjur", "Hemlighusnyckel", "ÖverImorgon",
                                    "MikrovågsugnsuppvÄrmninG", "SamhäLlsutvecklinGsstrategi", "ArbetsmIljöskyddsinspektör", "OlIvträdgårdsmäÄstare", "Mellanmjölksglass"
+    ]
+    
+    private let wordsEasy: [String] = [
+        "Gurka", "Tomat", "Bil", "Båt", "Matta", "Boll", "Sol", "Moln", "Katt", "Hund",
+        "Röd", "Grön", "Bok", "Stol", "Fågel", "Träd", "Skor", "Hus", "Fönster", "Dörr",
+        "Vatten", "Blomma", "Sten", "Sand", "Gräs", "Snö", "Regn", "Åska", "Berg", "Dal",
+        "Äpple", "Banan", "Orange", "Penna", "Papper", "Bord", "Lampa", "Nyckel", "Telefon", "Sked",
+        "Gaffel", "Kniv", "Tallrik", "Kopp", "Glas", "Hatt", "Jacka", "Byxor", "Tröja", "Skjorta"
     ]
     
     private var currentWordIndex = 0
@@ -27,7 +35,7 @@ class GameModel {
     func selectWords(for difficulty: Difficulty) {
         switch difficulty {
         case .easy:
-            selectedWords = Array(words[0...4])
+            selectedWords = Array(wordsEasy.shuffled())
         case .medium:
             selectedWords = Array(words[5...9])
         case .hard:
@@ -35,12 +43,33 @@ class GameModel {
         }
     }
 
+    func startWordTimer(onUpdate: @escaping (Int) -> Void, onComplete: @escaping () -> Void) {
+        stopWordTimer()
+        var wordTimerValue = 5
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            DispatchQueue.main.async {
+                if wordTimerValue >= 0 {
+                    onUpdate(wordTimerValue)
+                    wordTimerValue -= 1
+                } else {
+                    self?.stopWordTimer()
+                    onComplete()
+                }
+            }
+        }
+    }
+    
+    func stopWordTimer() {
+        countdownTimer?.invalidate()
+        countdownTimer = nil
+    }
+    
     
     func startCountdown(from number: Int, onUpdate: @escaping (Int) -> Void, onComplete: @escaping () -> Void) {
         countdownValue = number
         countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             guard let self = self else { return }
-            if self.countdownValue > 0 {
+            if self.countdownValue >= 0 {
                 onUpdate(self.countdownValue)
                 self.countdownValue -= 1
             } else {
