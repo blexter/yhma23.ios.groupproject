@@ -9,7 +9,12 @@ import Foundation
 
 class GameModel {
     
-    private let words: [String] = ["easy1", "easy2", "easy3", "easy4", "easy5", "medium1", "medium2", "medium3", "medium4", "medium5", "hard1", "hard2", "hard3", "hard4", "hard5"]
+    // List total words must be % 3 == 0 following easy-medium-hard order
+    private let words: [String] = ["Gurkan", "ÄR", "arg", "På", "pEnnAn",
+                                   "Långsamt", "Fönsterputsare", "Krokodildjur", "Hemlighusnyckel", "ÖverImorgon",
+                                   "MikrovågsugnsuppvÄrmninG", "SamhäLlsutvecklinGsstrategi", "ArbetsmIljöskyddsinspektör", "OlIvträdgårdsmäÄstare", "Mellanmjölksglass"
+    ]
+    
     private var currentWordIndex = 0
     private var lastPointAwardedWordIndex = -1
     
