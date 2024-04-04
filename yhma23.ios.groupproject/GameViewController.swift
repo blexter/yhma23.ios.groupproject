@@ -13,6 +13,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     var gameModel = GameModel()
     var gameTimer: Timer?
     var gameTimeRemaining: Int = 30
+    var isPulsingStarted = false
     
     @IBOutlet weak var currentPointsLabel: UILabel!
     @IBOutlet weak var wordLabel: UILabel!
@@ -31,7 +32,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         let finalScore = gameModel.score
         let highscoreEntry = HighscoresManager.HighscoreEntry(player: playerName, score: finalScore)
         HighscoresManager.saveHighscore(highscoreEntry)
-
+        
     }
     
     
@@ -44,13 +45,12 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         
         inputWordTextField.delegate = self
         inputWordTextField.isEnabled = false
-
+        
         
     }
     
     
     func startCountdown(from number: Int) {
-        countdownLabel.center = CGPoint(x: view.frame.size.width / 2, y: (view.frame.size.height / 2) - 150)
         countdownLabel.isHidden = false
         
         gameModel.startCountdown(from: number, onUpdate: { [weak self] remainingTime in
@@ -72,13 +72,12 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         gameTimeRemaining = 30
         gameTimer?.invalidate()
         
-        gameTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+        gameTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.gameTimerTick()
         }
     }
-
+    
     func gameTimerTick() {
-        var isPulsingStarted = false
         gameTimeRemaining -= 1
         self.timeRemainingLabel.text = "\(self.gameTimeRemaining)"
         
@@ -88,14 +87,14 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             endGame()
         } else if gameTimeRemaining <= 10 {
             self.timeRemainingLabel.textColor = UIColor.red
-            // starts the animation
+            // starts the pulse animation if the timer is 10 or less
             if !isPulsingStarted {
                 pulseAnimation()
                 isPulsingStarted = true
             }
         }
     }
-
+    
     func endGame() {
         gameModel.stopWordTimer()
         countdownLabel.isHidden = true
@@ -116,7 +115,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        wordLabel.center = CGPoint(x: view.frame.size.width / 2, y: view.frame.size.height / 2)
         wordLabel.text = nextWord
         wordLabel.alpha = 0
         
@@ -138,7 +136,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             self?.currentPointsLabel.text = String(self?.gameModel.score ?? 0)
         })
     }
-
+    
     
     func prepareNextWord() {
         if gameModel.hasMoreWords() {
@@ -161,20 +159,20 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         // Delay to display the game finish message
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.view.addSubview(gameFinishLabel)
-        
+            
         }
-    
+        
     }
     
     func pulseAnimation() {
         UIView.animate(withDuration: 0.5,
-            delay: 0,
-            options: [.autoreverse, .repeat],
-            animations: { [weak self] in
-                self?.timeRemainingLabel.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-            }, completion: nil)
+                       delay: 0,
+                       options: [.autoreverse, .repeat],
+                       animations: { [weak self] in
+            self?.timeRemainingLabel.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        }, completion: nil)
     }
-
+    
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
@@ -203,7 +201,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             destinationVC.totalPoints = self.gameModel.score
         }
     }
-
+    
     
     
 }
